@@ -1,4 +1,4 @@
-# Project 3 - *Name of App Here*
+# Project 3 - *Yelp*
 
 **Name of your app** is a Yelp search app using the [Yelp API](http://www.yelp.com/developers/documentation/v2/search_api).
 
