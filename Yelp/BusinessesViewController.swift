@@ -8,17 +8,24 @@
 
 import UIKit
 
-class BusinessesViewController: UIViewController {
+class BusinessesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var businesses: [Business]!
+    @IBOutlet weak var businessesTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.businessesTableView.dataSource = self
+        self.businessesTableView.delegate = self
+        self.businessesTableView.rowHeight = UITableViewAutomaticDimension
+        self.businessesTableView.estimatedRowHeight = 120
         
         Business.searchWithTerm(term: "Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
             
             self.businesses = businesses
             if let businesses = businesses {
+                self.businessesTableView.reloadData()
                 for business in businesses {
                     print(business.name!)
                     print(business.address!)
@@ -44,6 +51,24 @@ class BusinessesViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    // MARK: - UITableViewCell Delegate
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let businesses = self.businesses {
+            return businesses.count
+        } else {
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let businessCell: BusinessTableViewCell = self.businessesTableView.dequeueReusableCell(withIdentifier: businessTableViewCellReusableIdentifier, for: indexPath) as! BusinessTableViewCell
+        
+        businessCell.business = self.businesses[indexPath.row]
+        return businessCell
     }
     
     /*
