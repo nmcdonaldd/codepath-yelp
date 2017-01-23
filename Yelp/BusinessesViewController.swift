@@ -18,6 +18,7 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.shared.statusBarStyle = .lightContent
         self.businessesTableView.dataSource = self
         self.businessesTableView.delegate = self
         self.businessesTableView.rowHeight = UITableViewAutomaticDimension
@@ -51,6 +52,10 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
          }
          */
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        UIApplication.shared.statusBarStyle = .default
     }
     
     @objc private func keyboardDismissed(notification: Notification) {
