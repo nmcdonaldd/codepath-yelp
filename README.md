@@ -2,15 +2,15 @@
 
 **Name of your app** is a Yelp search app using the [Yelp API](http://www.yelp.com/developers/documentation/v2/search_api).
 
-Time spent: **X** hours spent in total
+Time spent: **~2** hours spent in total
 
 ## User Stories
 
 The following **required** functionality is completed:
 
-- [ ] Table rows for search results should be dynamic height according to the content height.
-- [ ] Custom cells should have the proper Auto Layout constraints.
-- [ ] Search bar should be in the navigation bar (doesn't have to expand to show location like the real Yelp app does).
+- [x] Table rows for search results should be dynamic height according to the content height.
+- [x] Custom cells should have the proper Auto Layout constraints.
+- [x] Search bar should be in the navigation bar (doesn't have to expand to show location like the real Yelp app does).
 
 The following **optional** features are implemented:
 
@@ -25,24 +25,24 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1. 
-2. 
+1. I'd like to discuss the didSet observer on the business var in the tableViewCell. What other observers are there and examples of when and how to use them.
+2. How to completely relayout the views if the device is turned landscape.
 
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/bLCCpqF.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+When loading the businesses, I found that it is a better idea to set the preferredMaxLayoutWidth in the business didSet observer since it could be the case that the nib is awoken and the data hasn't loaded yet. So it would be a better idea to set the preferredMaxLayoutWidth after the label has been set.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright 2017 Nicholas McDonald
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
