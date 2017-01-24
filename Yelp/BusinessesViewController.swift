@@ -77,6 +77,7 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
         self.searchController = searchController
         self.searchController.hidesNavigationBarDuringPresentation = false
         self.searchController.searchBar.delegate = self
+        self.searchController.searchBar.placeholder = "Search for restaurants"
     }
     
     override func didReceiveMemoryWarning() {
